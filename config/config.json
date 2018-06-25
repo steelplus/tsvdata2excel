@@ -1,0 +1,21 @@
+{
+  "splitChar": "\t",
+  "targetSheet": "1",
+  "identifier": {
+    "tsv": "ID",
+    "xlsx": "A"
+  },
+  "filledColumn": [ "A" ],
+  "endOfColumn": "AA",
+  "mapping": [
+    {
+      "tsv": [ "ID" ],
+      "xlsx": [ "A" ]
+    },
+    {
+      "tsv": [ "TITLE", "TITLE(SUB)" ],
+      "xlsx": [ "B", "C" ],
+      "splitChar": "\r\n\r\n"
+    }
+  ]
+}
