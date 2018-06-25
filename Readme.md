@@ -10,13 +10,15 @@ TSVファイルに含まれたレコードをExcelへ書き込むツールです
 
 #  ``config.json``について
 
+config/config.jsonにサンプルがありますので参考にして下さい。
+
 |プロパティ|役割|
 |----|----|
-|splitChar(必須)|TSVファイルの区切り文字を指定します|
-|targetSheet(必須)|excelファイルの編集先シートを指定します|
+|splitChar(必須)|TSVファイルの区切り文字を指定します (例：「\t」)|
+|targetSheet(必須)|excelファイルの編集先シート番号を指定します|
 |identifier(必須)|TSVファイルのヘッダ名とエクセルファイルの列の組み合わせを指定します。この列の値をキーにして更新行を検索します。|
 |filledColumn|excel側に常に値が入っている列があれば指定して下さい|
-|endOfColumn|excelのどの列まで探索するかを指定します|
+|endOfColumn(必須)|excelのどの列まで探索するかを指定します|
 |mapping|TSVファイルのヘッダ名とエクセルファイルの列の組み合わせを指定します。複数対複数も可能です。|
 
 mappingにてTSVの複数の列をexcelのセルに書き込む場合は、``mapping[].SplitChar``を区切り文字として書き込みます。
