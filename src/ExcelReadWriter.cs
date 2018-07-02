@@ -5,7 +5,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TsvData2Excel
 {
-    class ExcelReadWriter
+    class ExcelReadWriter : IDisposable
     {
         private Excel.Application mExcel = new Excel.Application
         {
@@ -22,18 +22,7 @@ namespace TsvData2Excel
         /// <summary>
         /// コンストラクタ。
         /// </summary>
-        public ExcelReadWriter()
-        {
-        }
-
-        /// <summary
-        /// パスからエクセルファイルをオープンします。
-        /// 開始処理として必ず実行して下さい。
-        /// </summary>
-        /// <param name="filePath">エクセルファイルのパス</param>
-        /// <param name="filePath">シート名</param>
-        /// <returns>Workbookオブジェクト</returns>
-        public void Open(string filePath, string sheetName)
+        public ExcelReadWriter(string filePath, string sheetName)
         {
             // ブックのオープン
             this.mWorkbook = this.mExcel.Workbooks.Open(System.IO.Path.GetFullPath(filePath));
@@ -157,9 +146,8 @@ namespace TsvData2Excel
 
         /// <summary>
         /// エクセルファイルを保存し、アプリケーションのオブジェクトを開放します。
-        /// 終端処理として必ず実行して下さい。
         /// </summary>
-        public void Close()
+        public void Dispose()
         {
             //開いているファイルのバックアップ保存
             DateTime dt = DateTime.Now;

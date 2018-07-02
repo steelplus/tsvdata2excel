@@ -39,11 +39,8 @@ namespace TsvData2Excel
             IList<Dictionary<string, string>> updateRows = ReadRows(tsvFilePath, config);
 
             // エクセルファイル(シート)の読み込み
-            ExcelReadWriter excelReadWriter = new ExcelReadWriter();
-            try
+            using (ExcelReadWriter excelReadWriter = new ExcelReadWriter(xlsFilePath, config.TargetSheet))
             {
-                excelReadWriter.Open(xlsFilePath, config.TargetSheet);
-
                 // 更新行があれば更新を行う。なければ新規行追加
                 foreach (Dictionary<string, string> row in updateRows)
                 {
@@ -62,11 +59,6 @@ namespace TsvData2Excel
                     }
                 }
             }
-            finally
-            {
-                excelReadWriter.Close();
-            }
-
         }
 
         /// <summary>
